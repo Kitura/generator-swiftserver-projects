@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - stable
+before_script:
+  - npm install -g yo
+  - npm install -g swiftserver
+  - projectName="swiftserver-generator-projects"
+  - mkdir $projectName    ???
+  - cd $projectName
+  - yo swiftserver --init --skip-build
+  - osName="linux"
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
+  - export projectFolder=`pwd`
+  - export SWIFT_SNAPSHOT=swift-4.0.3
+script:
+  - testGenerator.sh
+after_success:
+  - updateRepo.sh
