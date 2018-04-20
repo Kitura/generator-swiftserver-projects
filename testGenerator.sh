@@ -8,7 +8,7 @@ yo swiftserver --init --skip-build
 export SWIFT_SNAPSHOT=swift-4.0.3
 echo "Testing swiftserver generated project"
 git clone https://github.com/IBM-Swift/Package-Builder.git
-if ! ./Package-Builder/build-package.sh -projectDir .
+if ! ./Package-Builder/build-package.sh -projectDir ${projectFolder}
 then
   echo "FAILED"
   cd ${TRAVIS_BUILD_DIR}
