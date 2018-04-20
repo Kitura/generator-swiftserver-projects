@@ -6,6 +6,7 @@ export GH_REPO="github.com/${ORG}/${REPO}.git"
 export BRANCH="init"
 export projectName="generator-swiftserver-projects"
 
+cd ${TRAVIS_BUILD_DIR}
 mkdir current
 cd current
 git clone -b ${BRANCH} "https://github.com/${ORG}/${REPO}.git"
