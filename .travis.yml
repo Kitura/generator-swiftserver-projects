@@ -3,7 +3,7 @@ node_js:
   - stable
 before_script:
   - npm install -g yo
-  - npm install -g swiftserver
+  - npm install -g generator-swiftserver
   - projectName="swiftserver-generator-projects"
   - mkdir $projectName    ???
   - cd $projectName

@@ -28,4 +28,4 @@ echo "Project needs to be updated"
 cp -r ${newProject}/${projectName}/. ${currentProject}/${projectName}
 git add $(git diff --name-only)
 git commit -m "CRON JOB: Updating generated project"
-git push "https://${GH_TOKEN}@${GH_REPO}" ${BRANCH}
+git push origin ${BRANCH}
