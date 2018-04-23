@@ -6,4 +6,4 @@ export projectFolder=`pwd`
 echo "Generating project"
 yo swiftserver --init --skip-build
 echo "Testing swiftserver generated project"
-git clone https://github.com/IBM-Swift/Package-Builder.git
+git clone https://github.com/alexwishart/Package-Builder.git -b debug
