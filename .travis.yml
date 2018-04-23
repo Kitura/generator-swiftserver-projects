@@ -7,6 +7,12 @@ before_script:
   - osName="linux"
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
 script:
-  - ./testGenerator.sh
+  - ./generateProject.sh
+  - ./Package-Builder/build-package.sh -projectDir ${projectFolder}
 after_success:
+  - cd ${TRAVIS_BUILD_DIR}
+  - rm -rf ${projectFolder}
   - ./updateRepo.sh
+after_failure:
+  - cd ${TRAVIS_BUILD_DIR}
+  - rm -rf ${projectFolder}
