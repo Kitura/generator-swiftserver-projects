@@ -8,6 +8,7 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
 script:
   - ./generateProject.sh
+  - echo ${projectFolder}
   - ${projectFolder}/Package-Builder/build-package.sh -projectDir ${projectFolder}
 after_success:
   - cd ${TRAVIS_BUILD_DIR}
