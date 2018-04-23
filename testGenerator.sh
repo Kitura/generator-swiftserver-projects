@@ -5,7 +5,7 @@ cd ${projectName}
 export projectFolder=`pwd`
 echo "Generating project"
 yo swiftserver --init --skip-build
-export SWIFT_SNAPSHOT=swift-4.0.3
+#export SWIFT_SNAPSHOT=swift-4.0.3
 echo "Testing swiftserver generated project"
 git clone https://github.com/IBM-Swift/Package-Builder.git
 if ! ./Package-Builder/build-package.sh -projectDir ${projectFolder}
