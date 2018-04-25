@@ -3,4 +3,5 @@
 /.build-ubuntu
 /Packages
 /config.json
+/spec.json
 ./config/localdev-config.json
