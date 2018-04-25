@@ -9,7 +9,7 @@ export projectName="generator-swiftserver-projects"
 cd ${TRAVIS_BUILD_DIR}
 mkdir current
 cd current
-git clone -b ${BRANCH} "https://github.com/${ORG}/${REPO}.git"
+git clone -b ${BRANCH} "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${ORG}/${REPO}.git"
 export currentProject=`pwd`
 
 mkdir -p ../new/${projectName}
