@@ -25,6 +25,7 @@ This application has been generated with the following capabilities and services
 * [CloudEnvironment](#configuration)
 * [Embedded metrics dashboard](#embedded-metrics-dashboard)
 * [Docker files](#docker-files)
+* [Iterative Development](#iterative-development)
 * [IBM Cloud deployment](#ibm-cloud-deployment)
 
 #### Embedded metrics dashboard
@@ -85,6 +86,13 @@ To compile the application using the tools docker image, run:
 To run the application:
 * `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/generator-swiftserver-projects`
 
+#### Iterative Development
+The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast & easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
+
+To use iterative development:
+* For native OS, execute the `./iterative-dev.sh` script from the root of the project.
+* With docker, shell into the tools container mentioned above, and run the `./swift-project/iterative-dev.sh` script.  File system changes are detected using a low-tech infinitely looping poll mechanism, which works in both local OS/filesystem and across host OS->Docker container volume scenarios.
+
 ### Deploy to IBM Cloud
 You can deploy your application to Bluemix using:
 * the [CloudFoundry CLI](#cloudfoundry-cli)
@@ -107,4 +115,4 @@ You can also set up a default IBM Cloud Toolchain to handle deploying your appli
 All generated content is available for use and modification under the permissive MIT License (see `LICENSE` file), with the exception of SwaggerUI which is licensed under an Apache-2.0 license (see `NOTICES.txt` file).
 
 ### Generator
-This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.0.0.
+This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.0.1.
