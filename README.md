@@ -115,4 +115,4 @@ You can also set up a default IBM Cloud Toolchain to handle deploying your appli
 All generated content is available for use and modification under the permissive MIT License (see `LICENSE` file), with the exception of SwaggerUI which is licensed under an Apache-2.0 license (see `NOTICES.txt` file).
 
 ### Generator
-This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.0.1.
+This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.0.2.
