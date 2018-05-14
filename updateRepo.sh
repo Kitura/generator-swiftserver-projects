@@ -28,6 +28,5 @@ fi
 echo "Project needs to be updated"
 cp -r ${newProject}/${projectName}/. ${currentProject}/${projectName}
 cd ${currentProject}/${projectName}
-git add $(git diff --name-only)
-git commit -m "CRON JOB: Updating generated project"
+git commit -am "CRON JOB: Updating generated project"
 git push origin ${BRANCH}
