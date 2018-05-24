@@ -1,4 +1,4 @@
-export projectName="generator-swiftserver-projects"
+export projectName="Generator-Swiftserver-Projects"
 cd ${TRAVIS_BUILD_DIR}
 mkdir ${projectName}
 cd ${projectName}
