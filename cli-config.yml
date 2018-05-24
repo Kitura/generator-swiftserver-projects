@@ -38,7 +38,7 @@ build-cmd-debug : "/swift-utils/tools-utils.sh build debug"
 # The command to run the code in the run container
 run-cmd : ""
 # The command to execute debug of the code in the tools container
-debug-cmd : "/swift-utils/tools-utils.sh debug generatorswiftserverprojects 1024"
+debug-cmd : "/swift-utils/tools-utils.sh debug GeneratorSwiftserverProjects 1024"
 # The command to stop the code
 stop-cmd : ""
 
