@@ -2,8 +2,8 @@
 applications:
 - instances: 1
   timeout: 180
-  name: generator-swiftserver-projects
+  name: Generator-Swiftserver-Projects
   buildpack: swift_buildpack
-  command: "'generator-swiftserver-projects'"
+  command: "'Generator-Swiftserver-Projects'"
   memory: 128M
   random-route: true

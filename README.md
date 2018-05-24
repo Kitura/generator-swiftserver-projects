@@ -70,7 +70,7 @@ When you push your application to IBM Cloud, these values are no longer used, in
 ### Run
 To build and run the application:
 1. `swift build`
-1. `.build/debug/generator-swiftserver-projects`
+1. `.build/debug/Generator-Swiftserver-Projects`
 
 **NOTE**: On macOS you will need to add options to the `swift build` command: `swift build -Xlinker -lc++`
 
@@ -84,7 +84,7 @@ To compile the application using the tools docker image, run:
 * `docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release`
 
 To run the application:
-* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/generator-swiftserver-projects`
+* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/Generator-Swiftserver-Projects`
 
 #### Iterative Development
 The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast & easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
