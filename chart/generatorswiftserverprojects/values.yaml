@@ -26,7 +26,6 @@ hpa:
       targetAverageUtilization: 70
     memory:
       targetAverageUtilization: 70
-services:
 base:
   enabled: false
   replicaCount: 1
@@ -36,3 +35,5 @@ base:
 istio:
   enabled: false
   weight: 100
+generatedBindings:
+  enabled: true
