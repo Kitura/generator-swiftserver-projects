@@ -12,5 +12,5 @@ You can run your project in Xcode by opening the `.xcproject` file that has been
 #### Command-line
 Run `swift build` in the project's directory, then run `/.build/debug/<your project name>` to start the Kitura server. Your server should now be accessible by going to `localhost:8080` in your browser.
 
-#### Next steps
+### Next steps
 Visit [kitura.io](http://www.kitura.io/) for more information about how you can extend your Kitura server, or try out the Kitura Cloud Ready project.
