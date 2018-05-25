@@ -1,7 +1,6 @@
 echo "Checking if repo needs to be updated"
 export ORG="IBM-Swift"
 export REPO="generator-swiftserver-projects"
-export FILES="README.md foo.txt bar.txt"
 export GH_REPO="github.com/${ORG}/${REPO}.git"
 export BRANCH="init"
 export projectName="generator-swiftserver-projects"
