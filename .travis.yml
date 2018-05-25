@@ -5,6 +5,7 @@ node_js:
 before_script:
   - npm install -g yo
   - npm install -g generator-swiftserver
+  - npm install -g markdown-pdf
   - osName="linux"
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
 script:
