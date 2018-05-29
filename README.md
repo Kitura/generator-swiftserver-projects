@@ -1,6 +1,6 @@
 ## Scaffolded Swift Kitura server application
 
-[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)
+[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
 [![Platform](https://img.shields.io/badge/platform-swift-lightgrey.svg?style=flat)](https://developer.ibm.com/swift/)
 
 ### Table of Contents
@@ -115,4 +115,4 @@ You can also set up a default IBM Cloud Toolchain to handle deploying your appli
 All generated content is available for use and modification under the permissive MIT License (see `LICENSE` file), with the exception of SwaggerUI which is licensed under an Apache-2.0 license (see `NOTICES.txt` file).
 
 ### Generator
-This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.0.5.
+This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.1.0.
