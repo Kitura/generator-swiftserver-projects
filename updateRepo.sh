@@ -14,6 +14,8 @@ export currentProject=`pwd`
 mkdir -p ../new/${projectName}
 cd ../new/${projectName}
 yo swiftserver --init --skip-build
+echo "Generate README pdf"
+markdown-pdf README.md
 cd ../
 export newProject=`pwd`
 
