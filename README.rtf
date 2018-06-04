@@ -127,7 +127,7 @@ example
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Run\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 To build and run the application:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab {\f1 swift build}\line \par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab {\f1 .build/debug/generator-swiftserver-projects}\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab {\f1 .build/debug/Generator-Swiftserver-Projects}\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 {\b NOTE}: On macOS you will need to add options to the {\f1 swift build} command: {\f1 swift build -Xlinker -lc++}\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Docker\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 To build the two docker images, run the following commands from the root directory of the project:\par}
@@ -136,7 +136,7 @@ example
 {\pard \ql \f0 \sa180 \li0 \fi0 To compile the application using the tools docker image, run:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release}\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 To run the application:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/generator-swiftserver-projects}\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/Generator-Swiftserver-Projects}\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 Iterative Development\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 The {\f1 iterative-dev.sh} script is included in the root of the generated Swift project and allows for fast & easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's {\b .swift} files and recompile the app accordingly.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 To use iterative development:\par}

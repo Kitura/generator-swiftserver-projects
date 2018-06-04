@@ -6,7 +6,7 @@ required:
  - repo
 
 toolchain:
-  name: generator-swiftserver-projects
+  name: Generator-Swiftserver-Projects
 
 # Github repos
 repo:
@@ -46,7 +46,7 @@ deploy:
     $ref: deploy.json
   service-category: pipeline
   parameters:
-    app-name: generator-swiftserver-projects
+    app-name: Generator-Swiftserver-Projects
     dev-space: "{{space}}"
     dev-organization: "{{organization}}"
     dev-region: "{{region}}"
