@@ -15,7 +15,7 @@ mkdir -p ../new/${projectName}
 cd ../new/${projectName}
 yo swiftserver --init --skip-build
 echo "Generate README rtf"
-pandoc README.md -f gfm -t rtf -so README.rtf
+pandoc README.md -f markdown_github -t rtf -so README.rtf
 cd ../
 export newProject=`pwd`
 
