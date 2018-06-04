@@ -3,7 +3,7 @@ export ORG="IBM-Swift"
 export REPO="generator-swiftserver-projects"
 export GH_REPO="github.com/${ORG}/${REPO}.git"
 export BRANCH="init"
-export projectName="generator-swiftserver-projects"
+export projectName="Generator-Swiftserver-Projects"
 
 cd ${TRAVIS_BUILD_DIR}
 mkdir current
