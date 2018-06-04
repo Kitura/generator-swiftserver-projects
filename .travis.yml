@@ -6,6 +6,7 @@ before_script:
   - npm install -g yo
   - npm install -g generator-swiftserver
   - npm install -g markdown-pdf
+  - sudo apt-get install -y pandoc
   - osName="linux"
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then osName="osx"; fi
 script:
