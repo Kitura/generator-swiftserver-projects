@@ -19,16 +19,16 @@ pandoc README.md -f markdown_github -t rtf -so README.rtf
 cd ../
 export newProject=`pwd`
 
-if diff -x '.git' -r ${currentProject}/${projectName} ${newProject}/${projectName}
+if diff -x '.git' -r ${currentProject}/${REPO} ${newProject}/${projectName}
 then
   echo "Project does not need to be updated"
-  rm -rf ${currentProject}/${projectName} ${newProject}/${projectName}
+  rm -rf ${currentProject}/${REPO} ${newProject}/${projectName}
   exit 1
 fi
 
 echo "Project needs to be updated"
-cp -r ${newProject}/${projectName}/. ${currentProject}/${projectName}
-cd ${currentProject}/${projectName}
+cp -r ${newProject}/${projectName}/. ${currentProject}/${REPO}
+cd ${currentProject}/${REPO}
 git add .
 git commit -m "CRON JOB: Updating generated project"
 git push origin ${BRANCH}
