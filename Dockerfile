@@ -1,5 +1,5 @@
 FROM ibmcom/swift-ubuntu-runtime:4.1.1
-MAINTAINER IBM Swift Engineering at IBM Cloud
+LABEL maintainer="IBM Swift Engineering at IBM Cloud"
 LABEL Description="Template Dockerfile that extends the ibmcom/swift-ubuntu-runtime image."
 
 # We can replace this port with what the user wants
@@ -24,4 +24,4 @@ RUN if [ $bx_dev_user != "root" ]; then useradd -ms /bin/bash -u $bx_dev_userid 
 COPY . /swift-project
 
 # Command to start Swift application
-CMD [ "sh", "-c", "cd /swift-project && .build-ubuntu/release/GeneratorSwiftserverProjects" ]
+CMD [ "sh", "-c", "cd /swift-project && .build-ubuntu/release/Generator-Swiftserver-Projects" ]
