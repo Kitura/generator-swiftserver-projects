@@ -14,7 +14,7 @@ livenessProbe:
   initialDelaySeconds: 3000
   periodSeconds: 1000
 service:
-  name: Node
+  name: swift
   type: NodePort
   servicePort: 8080
 hpa:
