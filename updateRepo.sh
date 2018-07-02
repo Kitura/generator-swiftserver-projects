@@ -1,8 +1,14 @@
+for i in {1..2}
+do
 echo "Checking if repo needs to be updated"
 export ORG="IBM-Swift"
 export REPO="generator-swiftserver-projects"
 export GH_REPO="github.com/${ORG}/${REPO}.git"
+if [[ i -eq 1 ]]; then
 export BRANCH="init"
+else
+export BRANCH="basic"
+fi
 export projectName="Generator-Swiftserver-Projects"
 
 cd ${TRAVIS_BUILD_DIR}
@@ -21,9 +27,9 @@ export newProject=`pwd`
 
 if diff -x '.git' -r ${currentProject}/${REPO} ${newProject}/${projectName}
 then
-  echo "Project does not need to be updated"
-  rm -rf ${currentProject}/${REPO} ${newProject}/${projectName}
-  exit 1
+echo "Project does not need to be updated"
+rm -rf ${currentProject}/${REPO} ${newProject}/${projectName}
+exit 1
 fi
 
 echo "Project needs to be updated"
@@ -32,3 +38,4 @@ cd ${currentProject}/${REPO}
 git add .
 git commit -m "CRON JOB: Updating generated project"
 git push origin ${BRANCH}
+done
