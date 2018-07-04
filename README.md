@@ -70,7 +70,7 @@ When you push your application to IBM Cloud, these values are no longer used, in
 ### Run
 To build and run the application:
 1. `swift build`
-1. `.build/debug/Generator-Swiftserver-Projects`
+1. `swift run` or `.build/debug/Generator-Swiftserver-Projects`
 
 **NOTE**: On macOS you will need to add options to the `swift build` command: `swift build -Xlinker -lc++`
 
@@ -115,4 +115,4 @@ You can also set up a default IBM Cloud Toolchain to handle deploying your appli
 All generated content is available for use and modification under the permissive MIT License (see `LICENSE` file), with the exception of SwaggerUI which is licensed under an Apache-2.0 license (see `NOTICES.txt` file).
 
 ### Generator
-This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.3.4.
+This project was generated with [generator-swiftserver](https://github.com/IBM-Swift/generator-swiftserver) v5.4.0.
