@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-swift build
+swift build -c release
