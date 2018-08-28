@@ -14,7 +14,7 @@ case "$BRANCH" in
 esac
 
 echo "Generate README rtf"
-pandoc README.md -f gfm -t rtf -so README.rtf
+pandoc README.md -f markdown_github -t rtf -so README.rtf
 cd ../
 
 
