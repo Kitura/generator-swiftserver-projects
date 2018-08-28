@@ -15,9 +15,3 @@ do
   export BRANCH=${branch}
   ${scriptDir}/updateRepo.sh
 done
-#
-# export BRANCH="init"
-# ${scriptDir}/updateRepo.sh
-#
-# export BRANCH="openAPI"
-# ${scriptDir}/updateRepo.sh
