@@ -15,7 +15,7 @@ script:
 after_success:
   - cd ${TRAVIS_BUILD_DIR}
   - rm -rf ${projectFolder}
-  - ./updateRepo.sh
+  - ./update.sh
 after_failure:
   - cd ${TRAVIS_BUILD_DIR}
   - rm -rf ${projectFolder}

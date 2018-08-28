@@ -1,33 +1,31 @@
-echo "Checking if repo needs to be updated"
-export ORG="IBM-Swift"
-export REPO="generator-swiftserver-projects"
-export GH_REPO="github.com/${ORG}/${REPO}.git"
-export BRANCH="init"
-export projectName="Generator-Swiftserver-Projects"
+cd ${currentProject}/${REPO}
+git checkout ${BRANCH}
 
-cd ${TRAVIS_BUILD_DIR}
-mkdir current
-cd current
-git clone -b ${BRANCH} "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${ORG}/${REPO}.git"
-export currentProject=`pwd`
-
-mkdir -p ../new/${projectName}
-cd ../new/${projectName}
-yo swiftserver --init --skip-build
-echo "Generate README rtf"
-pandoc README.md -f markdown_github -t rtf -so README.rtf
-cd ../
+mkdir -p ${TRAVIS_BUILD_DIR}/new/${BRANCH}/${projectName}
+cd ${TRAVIS_BUILD_DIR}/new
 export newProject=`pwd`
 
-if diff -x '.git' -r ${currentProject}/${REPO} ${newProject}/${projectName}
+case "$BRANCH" in
+     init) yo swiftserver --init --skip-build ;;
+  openAPI) echo "openAPI!" ;;
+        *) echo "Cannot generate project for this type." ;;
+esac
+
+echo "Generate README rtf"
+pandoc README.md -f gfm -t rtf -so README.rtf
+cd ../
+
+
+if diff -x '.git' -r ${currentProject}/${REPO} ${newProject}/${BRANCH}/${projectName}
 then
   echo "Project does not need to be updated"
-  rm -rf ${currentProject}/${REPO} ${newProject}/${projectName}
+  rm -rf ${currentProject}/${REPO} ${newProject}/${BRANCH}/${projectName}
   exit 1
 fi
 
 echo "Project needs to be updated"
-cp -r ${newProject}/${projectName}/. ${currentProject}/${REPO}
+exit 1
+cp -r ${newProject}/${BRANCH}/${projectName}/. ${currentProject}/${REPO}
 cd ${currentProject}/${REPO}
 git add .
 git commit -m "CRON JOB: Updating generated project"
