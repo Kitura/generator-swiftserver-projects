@@ -9,7 +9,7 @@ cd ${newProject}/${BRANCH}/${projectName}
 case "$BRANCH" in
      init) yo swiftserver --init --skip-build ;;
   openAPI) yo swiftserver --app --skip-build --spec \
-          '{ "appName": "MyProject", "appType": "scaffold", "appDir": ".", "openapi": true, "docker": true, "metrics": true, "healthcheck": true }' ;;
+          '{ "appName": "'${projectName}'", "appType": "scaffold", "appDir": ".", "openapi": true, "docker": true, "metrics": true, "healthcheck": true }' ;;
         *) echo "Cannot generate project for this type." ;;
 esac
 
