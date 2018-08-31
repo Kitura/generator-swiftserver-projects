@@ -14,7 +14,7 @@ script:
 after_success:
   - cd ${TRAVIS_BUILD_DIR}
   - rm -rf ${projectFolder}
-  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./update.sh; fi
+  - if [[ "$TRAVIS_BRANCH" = "master" && "$TRAVIS_PULL_REQUEST" = "false" ]]; then ./update.sh; fi
 after_failure:
   - cd ${TRAVIS_BUILD_DIR}
   - rm -rf ${projectFolder}
