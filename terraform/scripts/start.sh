@@ -2,5 +2,5 @@
 
 pkill swift
 cd .build/release
-./Generator-Swiftserver-Projects
+./MyProject
 cd -

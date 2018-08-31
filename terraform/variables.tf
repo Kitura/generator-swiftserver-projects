@@ -39,5 +39,5 @@ variable "ibm_sl_username" {
 # Update this via environment variable within the DevOps pipeline
 # For more information, please see the README
 variable "vi_instance_name" {
-	default = "Generator-Swiftserver-Projects-01"
+	default = "MyProject-01"
 }

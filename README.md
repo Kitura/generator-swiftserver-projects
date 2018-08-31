@@ -28,7 +28,7 @@ This application has been generated with the following capabilities and services
 ### Run
 To build and run the application:
 1. `swift build`
-1. `.build/debug/Generator-Swiftserver-Projects`
+1. `.build/debug/MyProject`
 
 #### Docker
 A description of the files related to Docker can be found in the [Docker files](#docker-files) setion. To build the two docker images, run the following commands from the root directory of the project:
@@ -40,11 +40,11 @@ To compile the application using the tools docker image, run:
 * `docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release`
 
 To run the application:
-* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/Generator-Swiftserver-Projects`
+* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/MyProject`
 
 
 #### Kubernetes
-To deploy your application to your Kubernetes cluster, run `helm install --name myapp .` in the `/chart/GeneratorSwiftserverProjects` directory. You need to make sure you change the `repository` variable in your `chart/GeneratorSwiftserverProjects/values.yaml` file points to the docker image containing your runnable application.
+To deploy your application to your Kubernetes cluster, run `helm install --name myapp .` in the `/chart/MyProject` directory. You need to make sure you change the `repository` variable in your `chart/MyProject/values.yaml` file points to the docker image containing your runnable application.
 
 ### Configuration
 Your application configuration information for any services is stored in the `localdev-config.json` file in the `config` directory. This file is in the `.gitignore` to prevent sensitive information from being stored in git. The connection information for any configured services that you would like to access when running locally, such as username, password and hostname, is stored in this file.

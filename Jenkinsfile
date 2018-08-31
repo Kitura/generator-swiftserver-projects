@@ -2,5 +2,5 @@
 
 @Library('MicroserviceBuilder') _
 microserviceBuilderPipeline {
-  image = 'generatorswiftserverprojects'
+  image = 'myproject'
 }

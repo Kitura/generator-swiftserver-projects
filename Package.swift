@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Generator-Swiftserver-Projects",
+    name: "MyProject",
     dependencies: [
       .package(url: "https://github.com/IBM-Swift/Kitura.git", .upToNextMinor(from: "2.5.0")),
       .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", .upToNextMinor(from: "1.7.1")),
@@ -12,7 +12,7 @@ let package = Package(
       .package(url: "https://github.com/IBM-Swift/Health.git", from: "1.0.0"),
     ],
     targets: [
-      .target(name: "Generator-Swiftserver-Projects", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
+      .target(name: "MyProject", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
       .target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","KituraOpenAPI","Health",      ]),
 
       .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
