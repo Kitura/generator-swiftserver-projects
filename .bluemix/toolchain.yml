@@ -7,7 +7,7 @@ template:
     - build
 
 toolchain:
-  name: MyProject
+  name: Generator-Swiftserver-Projects
 
 services:
   # Github repos
@@ -49,7 +49,7 @@ form:
     schema: 
       $ref: deploy.json
     parameters:
-      app-name: MyProject
+      app-name: Generator-Swiftserver-Projects
       dev-region: "{{region}}"
       dev-space: "{{space}}"
       dev-organization: "{{organization}}"
