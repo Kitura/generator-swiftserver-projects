@@ -11,11 +11,8 @@ let package = Package(
       .package(url: "https://github.com/IBM-Swift/Health.git", from: "1.0.0"),
     ],
     targets: [
-      .target(name: "Generator-Swiftserver-Projects", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
-      .target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics", "Health", 
-
-      ]),
-
-      .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
+      .target(name: "Generator-Swiftserver-Projects", dependencies: [.target(name: "Application"), "Kitura" , "HeliumLogger"]),
+      .target(name: "Application", dependencies: ["Kitura", "CloudEnvironment", "Health", "SwiftMetrics"]),
+      .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger"])
     ]
 )
