@@ -90,7 +90,7 @@ Docker files
 CloudEnvironment package
 }}}
  to read the connection and configuration information from the environment and this file. It uses {\f1 mappings.json}, found in the {\f1 config} directory, to communicate where the credentials can be found for each service.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ({\field{\*\fldinst{HYPERLINK "https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance"}}{\fldrslt{\ul
+{\pard \ql \f0 \sa180 \li0 \fi0 If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ({\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance"}}{\fldrslt{\ul
 example
 }}}
 ), or using the CloudFoundry CLI {\field{\*\fldinst{HYPERLINK "http://cli.cloudfoundry.org/en-US/cf/create-service-key.html"}}{\fldrslt{\ul
@@ -104,7 +104,7 @@ example
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab For native OS, execute the {\f1 ./iterative-dev.sh} script from the root of the project.\line \par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab With docker, shell into the tools container mentioned above, and run the {\f1 ./swift-project/iterative-dev.sh} script. File system changes are detected using a low-tech infinitely looping poll mechanism, which works in both local OS/filesystem and across host OS->Docker container volume scenarios.\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Deploy to IBM Cloud\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 You can deploy your application to Bluemix using:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 You can deploy your application to IBM Cloud using:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab the {\field{\*\fldinst{HYPERLINK "#cloudfoundry-cli"}}{\fldrslt{\ul
 CloudFoundry CLI
 }}}
@@ -114,14 +114,14 @@ IBM Cloud toolchain
 }}}
 \sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 CloudFoundry CLI\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 You can deploy the application to IBM Cloud using the CloudFoundry command-line:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab Install the Cloud Foundry command-line ({\field{\*\fldinst{HYPERLINK "https://docs.cloudfoundry.org/cf-cli/install-go-cli.html"}}{\fldrslt{\ul
-https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+{\pard \ql \f0 \sa180 \li0 \fi0 You can deploy the application using the IBM Cloud command-line:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 1.\tx360\tab Install the {\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/docs/cli/index.html"}}{\fldrslt{\ul
+IBM Cloud CLI
 }}}
-)\line \par}
+\line \par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 2.\tx360\tab Ensure all configured services have been provisioned\line \par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab Run {\f1 cf push} from the project root directory\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ({\field{\*\fldinst{HYPERLINK "https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance"}}{\fldrslt{\ul
+{\pard \ql \f0 \sa0 \li360 \fi-360 3.\tx360\tab Run {\f1 ibmcloud app push} from the project root directory\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ({\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance"}}{\fldrslt{\ul
 example
 }}}
 ) or the CloudFoundry CLI ({\f1 cf create-service} command)[{\field{\*\fldinst{HYPERLINK "http://cli.cloudfoundry.org/en-US/cf/create-service.html"}}{\fldrslt{\ul
@@ -133,8 +133,8 @@ configuration
 .\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs24 IBM Cloud toolchain\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 You can also set up a default IBM Cloud Toolchain to handle deploying your application to IBM Cloud. This is achieved by publishing your application to a publicly accessible github repository and using the "Create Toolchain" button below. In this case configured services will be automatically provisioned, once, during toolchain creation.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://console.ng.bluemix.net/devops/setup/deploy/"}}{\fldrslt{\ul
-{\cf1 [image: https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png]\cf0}
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/devops/setup/deploy/"}}{\fldrslt{\ul
+{\cf1 [image: https://cloud.ibm.com/devops/graphics/create_toolchain_button.png]\cf0}
 }}}
 \par}
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs28 Service descriptions\par}
@@ -161,11 +161,11 @@ Run section
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 manifest.yml}\line \par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 .bluemix/toolchain.yml}\line \par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab {\f1 .bluemix/pipeline.yml}\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 The {\field{\*\fldinst{HYPERLINK "https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest"}}{\fldrslt{\ul
+{\pard \ql \f0 \sa180 \li0 \fi0 The {\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/docs/cloud-foundry/deploy-apps.html#appmanifest"}}{\fldrslt{\ul
 {\f1 manifest.yml}
 }}}
  defines options which are passed to the Cloud Foundry {\f1 cf push} command during application deployment.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html"}}{\fldrslt{\ul
+{\pard \ql \f0 \sa180 \li0 \fi0 {\field{\*\fldinst{HYPERLINK "https://cloud.ibm.com/docs/services/ContinuousDelivery/index.html#cd_getting_started"}}{\fldrslt{\ul
 IBM Cloud DevOps
 }}}
  service provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications. The {\field{\*\fldinst{HYPERLINK "#deploy-to-ibm-cloud"}}{\fldrslt{\ul
@@ -178,5 +178,5 @@ IBM Cloud DevOps
 {\pard \ql \f0 \sa180 \li0 \fi0 This project was generated with {\field{\*\fldinst{HYPERLINK "https://github.com/IBM-Swift/generator-swiftserver"}}{\fldrslt{\ul
 generator-swiftserver
 }}}
- v5.9.0.\par}
+ v5.10.0.\par}
 }
