@@ -15,6 +15,7 @@ FAIL=""    # List of failed updates
 # Builds a list of branchs that failed to update (if any)
 function fail () {
   FAIL="$FAIL $1" && echo "Failed to push to branch: $BRANCH"
+  return 1
 }
 
 for BRANCH in $BRANCHES
