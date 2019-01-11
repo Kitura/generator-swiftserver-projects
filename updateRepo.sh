@@ -3,7 +3,7 @@ set -e
 set -x
 
 echo "Checking if repo needs to be updated"
-ORG="IBM-Swift"
+ORG="ddunn2"
 REPO="generator-swiftserver-projects"
 GH_REPO="github.com/${ORG}/${REPO}.git"
 BRANCHES="init openAPI"
@@ -24,7 +24,7 @@ do
   rm -rf new
   mkdir current
   cd current
-  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${ORG}/${REPO}.git"
+  git clone -b "${BRANCH}" "https://ddunn2:${GITHUB_PASS}@github.com/${ORG}/${REPO}.git"
   currentProject=$(pwd)
 
   mkdir -p "${TRAVIS_BUILD_DIR}/new/${projectName}"
