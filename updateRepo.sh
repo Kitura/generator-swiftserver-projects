@@ -55,8 +55,7 @@ do
   fi
 
   echo "Project needs to be updated"
-  rm -rf "${currentRepo}"
-  cp -r "${newRepo}/." "${currentRepo}"
+  rsync -av --update "${newRepo}/." "${currentRepo}"
   cd "${currentRepo}"
   git add -A
   git commit -m "CRON JOB: Updating generated project"
