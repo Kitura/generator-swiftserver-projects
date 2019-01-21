@@ -55,7 +55,7 @@ do
   fi
 
   echo "Project needs to be updated"
-  rsync -av --ignore-existing "${newRepo}/" "${currentRepo}"
+  rsync -av --ignore-timestamp "${newRepo}/" "${currentRepo}/"
   cd "${currentRepo}"
   git add -A
   git commit -m "CRON JOB: Updating generated project"
