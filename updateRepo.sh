@@ -2,7 +2,7 @@
 set -ex
 
 echo "Checking if repo needs to be updated"
-ORG="ddunn2"
+ORG="IBM-Swift"
 REPO="generator-swiftserver-projects"
 GH_REPO="github.com/${ORG}/${REPO}.git"
 BRANCHES="init openAPI"
@@ -22,7 +22,7 @@ do
   cd "${TRAVIS_BUILD_DIR}"
   rm -rf current
   rm -rf new
-  git clone -b "${BRANCH}" "https://ddunn2:${GITHUB_PASS}@github.com/${ORG}/${REPO}.git" current
+  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${ORG}/${REPO}.git" current
   currentProject="$(pwd)/current"
 
   # Need to create a project directory and move into it so we can run the generator.
