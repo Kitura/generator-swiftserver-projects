@@ -19,6 +19,7 @@ function fail () {
 
 for BRANCH in $BRANCHES
 do
+  echo "Generating project for ${BRANCH}"
   cd "${TRAVIS_BUILD_DIR}"
   rm -rf current
   rm -rf new
