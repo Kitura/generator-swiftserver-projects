@@ -1,0 +1,3 @@
+.build/							usr/src/Generator-Swiftserver-Projects
+terraform/scripts/install.sh	usr/src/Generator-Swiftserver-Projects
+terraform/scripts/start.sh		usr/src/Generator-Swiftserver-Projects
