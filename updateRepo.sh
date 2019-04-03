@@ -2,7 +2,7 @@
 set -ex
 
 echo "Checking if repo needs to be updated"
-echo "----------- ${TRAVIS_REPO_SLUG} -------------"
+
 if [[ $TRAVIS == true ]]
 then GH_REPO="github.com/${TRAVIS_REPO_SLUG}.git"
 else 
@@ -32,7 +32,7 @@ do
   cd "${TRAVIS_BUILD_DIR}"
   rm -rf current
   rm -rf new
-  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${ORG}/${REPO}.git" current
+  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@${GH_REPO}" current
   currentProject="$(pwd)/current"
 
   # Need to create a project directory and move into it so we can run the generator.
