@@ -2,9 +2,17 @@
 set -ex
 
 echo "Checking if repo needs to be updated"
-ORG="IBM-Swift"
-REPO="generator-swiftserver-projects"
-GH_REPO="github.com/${ORG}/${REPO}.git"
+if [[ $TRAVIS == true ]]
+then GH_REPO="github.com/${TRAVIS_REPO_SLUG}.git"
+else 
+  # If running locally set ORG to the Org of your fork.
+  ORG="<my-org>"
+  REPO="generator-swiftserver-projects"
+  GH_REPO="github.com/${ORG}/${REPO}.git"
+fi
+
+echo GH_REPO
+
 BRANCHES="init openAPI"
 projectName="Generator-Swiftserver-Projects"
 
@@ -51,8 +59,8 @@ do
   if diff -x '.git' -r "${currentRepo}" "${newRepo}"
   then
     echo "Project does not need to be updated"
-    rm -rf "${currentRepo}" "${newRepo}"
-    exit 1
+    rm -rf "${currentProject}" "${newProject}"
+    continue
   fi
 
   echo "Project needs to be updated"
@@ -60,7 +68,9 @@ do
   cd "${currentRepo}"
   git add -A
   git commit -m "CRON JOB: Updating generated project"
-  git push origin "${BRANCH}" || fail "${BRANCH}" || continue
+  if $TRAVIS_PULL_REQUEST == false 
+  then git push origin "${BRANCH}" || fail "${BRANCH}" || continue
+  fi
   SUCCESS="$SUCCESS $BRANCH"
 done
 
