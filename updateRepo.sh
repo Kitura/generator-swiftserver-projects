@@ -2,6 +2,7 @@
 set -ex
 
 echo "Checking if repo needs to be updated"
+echo "----------- ${TRAVIS_REPO_SLUG} -------------"
 if [[ $TRAVIS == true ]]
 then GH_REPO="github.com/${TRAVIS_REPO_SLUG}.git"
 else 
