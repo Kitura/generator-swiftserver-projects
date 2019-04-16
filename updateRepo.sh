@@ -69,7 +69,7 @@ do
   cd "${currentRepo}"
   git add -A
   git commit -m "CRON JOB: Updating generated project"
-  if $TRAVIS_PULL_REQUEST == false 
+  if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
   then git push origin "${BRANCH}" || fail "${BRANCH}" || continue
   fi
   SUCCESS="$SUCCESS $BRANCH"
