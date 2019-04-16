@@ -3,7 +3,7 @@
 replicaCount: 1
 revisionHistoryLimit: 1
 image:
-  repository: registry.ng.bluemix.net/replace-me-namespace/generatorswiftserverprojects
+  repository: icr.io/replace-me-namespace/generatorswiftserverprojects
   tag: v1.0.0
   pullPolicy: Always
   resources:
@@ -11,8 +11,8 @@ image:
       cpu: 200m
       memory: 300Mi
 livenessProbe:
-  initialDelaySeconds: 3000
-  periodSeconds: 1000
+  initialDelaySeconds: 30
+  periodSeconds: 10
 service:
   name: swift
   type: NodePort
