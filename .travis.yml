@@ -1,7 +1,7 @@
 language: node_js
 sudo: required
 node_js:
-  - stable
+  - "10"
 before_script:
   - npm install -g yo
   - npm install -g generator-swiftserver
