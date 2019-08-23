@@ -83,7 +83,8 @@ do
   git add -A
   if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
   then
-    git commit -m "CRON JOB: Updating generated project"
+    generatorVersion=`grep 'version' .yo-rc.json | sed -e's#.*"\([0-9\.]*\)"#\1#'`
+    git commit -m "CRON JOB: Updating project (generator: ${generatorVersion})"
     git push origin "${BRANCH}"
   else
     echo "Skipping push (not a cron job). Changes can be inspected in:"
