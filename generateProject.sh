@@ -1,5 +1,10 @@
+#!/bin/bash
 export projectName="Generator-Swiftserver-Projects"
-cd ${TRAVIS_BUILD_DIR}
+
+if [[ $TRAVIS == true ]]; then
+  cd ${TRAVIS_BUILD_DIR}
+fi
+
 mkdir ${projectName}
 cd ${projectName}
 export projectFolder=`pwd`
