@@ -1,10 +1,9 @@
 #!/bin/bash
 set -ex
 
-echo "Checking if repo needs to be updated"
-
 if [[ $TRAVIS == true ]]
-then GH_REPO="github.com/${TRAVIS_REPO_SLUG}.git"
+then
+  GH_REPO="github.com/${TRAVIS_REPO_SLUG}.git"
 else 
   # If running locally set ORG to the Org of your fork.
   ORG="<my-org>"
@@ -12,68 +11,83 @@ else
   GH_REPO="github.com/${ORG}/${REPO}.git"
 fi
 
+# Determine location of this script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo "Checking if repo needs to be updated"
 echo GH_REPO
 
+# List of branches that this script should try to update. Each of these must have
+# a generator command line associated in the script below.
 BRANCHES="init openAPI"
+
+# Name of project that should be generated. Note, this MUST match the name that is
+# hard-coded in kitura-cli, which will be replaced by a user's chosen project name.
 projectName="Generator-Swiftserver-Projects"
 
-SUCCESS="" # List of successful updates
-FAIL=""    # List of failed updates
-
-# Builds a list of branchs that failed to update (if any)
-function fail () {
-  FAIL="$FAIL $1" && echo "Failed to push to branch: $BRANCH"
-  return 1
-}
-
+# Process each branch
 for BRANCH in $BRANCHES
 do
+  cd "${SCRIPT_DIR}"
+  currentProject="${SCRIPT_DIR}/current/${BRANCH}"
+  newProjectDir="${SCRIPT_DIR}/new/${BRANCH}"
+  newProject="${newProjectDir}/${projectName}"
+
+  # Start from a clean state
+  rm -rf "${currentProject}"
+  mkdir -p "${currentProject}"
+  rm -rf "${newProjectDir}"
+  mkdir -p "${newProject}"
+
+  # Clone the current state of this branch
   echo "Generating project for ${BRANCH}"
-  cd "${TRAVIS_BUILD_DIR}"
-  rm -rf current
-  rm -rf new
-  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@${GH_REPO}" current
-  currentProject="$(pwd)/current"
+  git clone -b "${BRANCH}" "https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@${GH_REPO}" "${currentProject}"
 
-  # Need to create a project directory and move into it so we can run the generator.
-  mkdir -p "new/${projectName}" && cd "new/${projectName}"
-  if [[ "${BRANCH}" == "init" ]]
-  then
-    yo swiftserver --init --skip-build
-  elif [[ "$BRANCH" == "openAPI" ]]
-  then
-    yo swiftserver --app --spec '{ "appName":"'"$projectName"'", "appType":"scaffold", "appDir":".", "openapi":true, "docker":true, "metrics":true, "healthcheck":true }' --skip-build
-    rm spec.json
-  else
+  # Run the generator command associated with this branch name:
+  cd "${newProject}"
+  case "${BRANCH}" in
+  init)
+    yo --no-insight swiftserver --init --skip-build
+    ;;
+  openAPI)
+    yo --no-insight swiftserver --app --spec '{ "appName":"'"$projectName"'", "appType":"scaffold", "appDir":".", "openapi":true, "docker":true, "metrics":true, "healthcheck":true }' --skip-build
+    ;;
+  *)
+    echo "Error - no recipe for branch '${BRANCH}'."
     exit
-  fi
-  # Step back into the travis build directory after generator has finished.
-  cd "${TRAVIS_BUILD_DIR}"
+  esac
+  # Remove files that are excluded from the generated project
+  rm spec.json
 
-  echo "Generate README rtf"
-  pandoc README.md -f markdown_github -t rtf -so README.rtf
-  newProject="$(pwd)/new"
-
-  currentRepo="${currentProject}/${REPO}"
-  newRepo="${newProject}/${projectName}"
-
-  if diff -x '.git' -r "${currentRepo}" "${newRepo}"
+  # Diff the current and newly generated projects. If any files have changed,
+  # they should be committed and pushed to the branch.
+  if diff -x '.git' -r "${currentProject}" "${newProject}"
   then
     echo "Project does not need to be updated"
-    rm -rf "${currentProject}" "${newProject}"
     continue
   fi
 
+  # Files differed - use rsync to update files that have changed
   echo "Project needs to be updated"
-  rsync -av --ignore-times "${newRepo}/" "${currentRepo}/"
-  cd "${currentRepo}"
-  git add -A
-  git commit -m "CRON JOB: Updating generated project"
-  if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
-  then git push origin "${BRANCH}" || fail "${BRANCH}" || continue
-  fi
-  SUCCESS="$SUCCESS $BRANCH"
-done
+  rsync -avc --delete --exclude '.git' "${newProject}/" "${currentProject}/"
+  
+  # CD to the newly updated project
+  cd "${currentProject}"
+  
+  # Update the README.rtf
+  echo "Generate README rtf"
+  pandoc README.md -f markdown_github -t rtf -so README.rtf
 
-echo Success: $SUCCESS
-echo Failed: $FAIL
+  # Add all changes. Only commit and push if we detect this script is running as
+  # part of a Travis build (and not a pull request).
+  git add -A
+  if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
+  then
+    generatorVersion=`grep 'version' .yo-rc.json | sed -e's#.*"\([0-9\.]*\)"#\1#'`
+    git commit -m "CRON JOB: Updating project (generator: ${generatorVersion})"
+    git push origin "${BRANCH}"
+  else
+    echo "Skipping push (not a cron job). Changes can be inspected in:"
+    echo "  ${currentProject}"
+  fi
+done
