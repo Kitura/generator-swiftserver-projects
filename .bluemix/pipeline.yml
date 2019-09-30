@@ -1,4 +1,5 @@
 ---
+defaultBaseImageVersion: latest
 stages:
 - name: Build Stage
   inputs:
@@ -72,7 +73,7 @@ stages:
     value: "${CF_DOMAIN}"
     type: text
   jobs:
-  - name: Deploy
+  - name: Test
     type: deployer
     deploy_type: cf
     target:
@@ -84,7 +85,7 @@ stages:
     script: |-
       export CF_ENDPOINT=$(cf app $CF_APP | grep running)
       if [[ "$CF_ENDPOINT" != "" ]]; then
-        echo "Your application is up anding running"
+        echo "Your application is up anding running at http://."
         echo "====================================================================="
       else
         echo "There was a problem with starting your application"
