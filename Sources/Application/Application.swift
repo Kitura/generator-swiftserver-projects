@@ -15,6 +15,8 @@ public class App {
     let cloudEnv = CloudEnv()
 
     public init() throws {
+        // Configure logging
+        initializeLogging()
         // Run the metrics initializer
         initializeMetrics(router: router)
     }

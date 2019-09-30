@@ -26,18 +26,18 @@ else
 fi
 
 echo -e "Existing images in registry"
-ibmcloud cr images
 
 echo "=========================================================="
 echo -e "BUILDING CONTAINER IMAGE: ${IMAGE_NAME}:${BUILD_NUMBER}"
 set -x
 ibmcloud cr build -t ${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_NUMBER} .
+ibmcloud cr image-tag ${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_NUMBER} \
+    ${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:latest
+
 set +x
 ibmcloud cr image-inspect ${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${BUILD_NUMBER}
 
 export PIPELINE_IMAGE_URL="$REGISTRY_URL/$REGISTRY_NAMESPACE/$IMAGE_NAME:$BUILD_NUMBER"
-
-ibmcloud cr images
 
 echo "=========================================================="
 echo "COPYING ARTIFACTS needed for deployment and testing (in particular build.properties)"
@@ -49,9 +49,6 @@ mkdir -p $ARCHIVE_DIR
 # build as input and configured with an environment properties file valued 'build.properties'
 # will be able to reuse the env variables in their job shell scripts.
 
-# CHART information from build.properties is used in Helm Chart deployment to set the release name
-CHART_NAME=$(find chart/. -maxdepth 2 -type d -name '[^.]?*' -printf %f -quit)
-echo "CHART_NAME=${CHART_NAME}" >> $ARCHIVE_DIR/build.properties
 # IMAGE information from build.properties is used in Helm Chart deployment to set the release name
 echo "IMAGE_NAME=${IMAGE_NAME}" >> $ARCHIVE_DIR/build.properties
 echo "BUILD_NUMBER=${BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
@@ -69,7 +66,3 @@ if [ -d ./scripts/ ]; then
   fi
 fi
 
-echo "Copy Helm chart along with the build"
-if [ ! -d $ARCHIVE_DIR/chart/ ]; then # no need to copy if working in ./ already
-  cp -r ./chart/ $ARCHIVE_DIR/
-fi
